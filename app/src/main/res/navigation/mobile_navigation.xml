@@ -31,4 +31,14 @@
         android:name="cat.smartcoding.mendez.freedating.ui.profiles.ProfilesFragment"
         android:label="profiles_fragment_item_list"
         tools:layout="@layout/profiles_fragment_item_list" />
+    <fragment
+        android:id="@+id/nav_like"
+        android:name="cat.smartcoding.mendez.freedating.ui.home.LikeFragment"
+        android:label="like_fragment"
+        tools:layout="@layout/like_fragment" />
+    <fragment
+        android:id="@+id/nav_visit"
+        android:name="cat.smartcoding.mendez.freedating.ui.home.VisitFragment"
+        android:label="visit_fragment"
+        tools:layout="@layout/visit_fragment" />
 </navigation>
