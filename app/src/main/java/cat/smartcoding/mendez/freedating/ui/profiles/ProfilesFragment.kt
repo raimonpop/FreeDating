@@ -1,5 +1,6 @@
 package cat.smartcoding.mendez.freedating.ui.profiles
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import cat.smartcoding.mendez.freedating.MainActivity
 import cat.smartcoding.mendez.freedating.R
 import cat.smartcoding.mendez.freedating.ui.profiles.placeholder.PlaceholderContent
 
@@ -43,6 +45,12 @@ class ProfilesFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (requireActivity().hasWindowFocus())
+            (requireActivity() as MainActivity).disableTabs()
     }
 
 //    companion object {

@@ -41,4 +41,9 @@
         android:name="cat.smartcoding.mendez.freedating.ui.home.VisitFragment"
         android:label="visit_fragment"
         tools:layout="@layout/visit_fragment" />
+    <activity
+        android:id="@+id/nav_home_activity"
+        android:name="cat.smartcoding.mendez.freedating.ui.home.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>

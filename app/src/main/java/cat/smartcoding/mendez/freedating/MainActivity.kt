@@ -1,8 +1,10 @@
 package cat.smartcoding.mendez.freedating
 
 import android.os.Bundle
+import android.transition.Visibility
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -12,8 +14,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import cat.smartcoding.mendez.freedating.databinding.ActivityMainBinding
+import cat.smartcoding.mendez.freedating.ui.home.HomeFragment
+import cat.smartcoding.mendez.freedating.ui.home.LikeFragment
+import cat.smartcoding.mendez.freedating.ui.home.VisitFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 /*
 *
@@ -83,6 +93,20 @@ class MainActivity : AppCompatActivity() {
         // Bottom navigation setup
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setupWithNavController(navController)
+        val fragments = arrayListOf<Fragment>(HomeFragment(), LikeFragment(), VisitFragment())
+        // Viewpager2
+        val adapter = object :  FragmentStateAdapter(this) {
+            override fun getItemCount(): Int = 3
+            override fun createFragment(position: Int): Fragment = fragments[position]
+        }
+
+        val viewPager2: ViewPager2 = binding.appBarMain.viewPager
+        viewPager2.adapter = adapter // Error use navgtion in adapter
+        val tabs: TabLayout = binding.appBarMain.tabs
+        TabLayoutMediator(tabs, viewPager2) { tab, position ->
+            tab.text = "OBJECT ${(position + 1)}"
+        }.attach()
+        enableTabs()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -103,5 +127,13 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun enableTabs() {
+        binding.appBarMain.tabs.visibility = View.VISIBLE
+    }
+
+    fun disableTabs() {
+        binding.appBarMain.tabs.visibility = View.GONE
     }
 }

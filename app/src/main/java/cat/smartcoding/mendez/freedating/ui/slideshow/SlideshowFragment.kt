@@ -1,5 +1,6 @@
 package cat.smartcoding.mendez.freedating.ui.slideshow
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import cat.smartcoding.mendez.freedating.MainActivity
 import cat.smartcoding.mendez.freedating.R
 import cat.smartcoding.mendez.freedating.databinding.FragmentSlideshowBinding
 
@@ -36,6 +38,11 @@ class SlideshowFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity as MainActivity).disableTabs()
     }
 
     override fun onDestroyView() {
