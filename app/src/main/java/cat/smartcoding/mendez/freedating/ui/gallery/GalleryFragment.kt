@@ -41,12 +41,6 @@ class GalleryFragment : Fragment() {
         return root
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (requireActivity().hasWindowFocus())
-            (requireActivity() as MainActivity).disableTabs()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

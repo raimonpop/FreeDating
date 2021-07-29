@@ -47,12 +47,6 @@ class ProfilesFragment : Fragment() {
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (requireActivity().hasWindowFocus())
-            (requireActivity() as MainActivity).disableTabs()
-    }
-
 //    companion object {
 //
 //        // TODO: Customize parameter argument names

@@ -1,6 +1,6 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="@string/sync_preferences">
 
         <EditTextPreference
             app:key="signature"
@@ -17,7 +17,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="@string/sync_account">
 
         <SwitchPreferenceCompat
             app:key="sync"
@@ -29,6 +29,14 @@
             app:summaryOff="@string/attachment_summary_off"
             app:summaryOn="@string/attachment_summary_on"
             app:title="@string/attachment_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_system">
+
+        <SwitchPreferenceCompat
+            app:key="notifications"
+            app:title="@string/sync_notification" />
 
     </PreferenceCategory>
 
