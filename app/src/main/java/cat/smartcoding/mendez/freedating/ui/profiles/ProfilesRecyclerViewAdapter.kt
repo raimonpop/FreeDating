@@ -20,12 +20,10 @@ class ProfilesRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(
-            ProfilesFragmentItemBinding.inflate(
+        return ViewHolder(ProfilesFragmentItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false)
         )
 
     }
@@ -46,6 +44,7 @@ class ProfilesRecyclerViewAdapter(
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
         }
+
     }
 
 }
