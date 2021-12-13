@@ -3,6 +3,7 @@ package cat.smartcoding.mendez.freedating.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import cat.smartcoding.mendez.freedating.MainActivity
 import cat.smartcoding.mendez.freedating.R
@@ -16,25 +17,76 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        
+        visibility(true)
+        isLoged()
         binding.mbIniciarSesion.setOnClickListener {
-            configAuth()
+            if(validFields()) {
+                visibility(false)
+                configAuth()
+            }
         }
-        
+    }
+
+    private fun isLoged(){
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null){
+            Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            onBackPressed()
+        }
     }
     
     private fun configAuth(){
         
         var email = binding.etUsername.text.toString()
         var password = binding.etPassword.text.toString()
+
         
-        firebase.signInWithEmailAndPassword(email, password).addOnCompleteListener { 
-            val intent= Intent(this, MainActivity::class.java)
-            startActivity(intent)
-                
+        firebase.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+        visibility(true)
+            if (it.isSuccessful){
+
+                val intent= Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                onBackPressed()
+            }else{
+                Toast.makeText(this, "Ha ocurrido algo", Toast.LENGTH_SHORT).show()
+            }
+
         }.addOnFailureListener {
-            Toast.makeText(this, "ha ocurrido algo", Toast.LENGTH_SHORT).show()
+            visibility(true)
+            Toast.makeText(this, "Ha ocurrido algo", Toast.LENGTH_SHORT).show()
 
         }
     }
+
+    private fun validFields(): Boolean{
+        var isValid = true
+
+        if(binding.etUsername.text.isNullOrEmpty()){
+            binding.etUsername.run {
+                error = "Campo requerido"
+                requestFocus()
+            }
+            isValid = false
+        }else if(binding.etPassword.text.isNullOrEmpty()){
+            binding.etPassword.run {
+                error = "Campo requerido"
+                requestFocus()
+            }
+            isValid = false
+        }
+
+
+        return isValid
+
+    }
+
+    private fun visibility(enable:Boolean){
+        binding.mbIniciarSesion.isEnabled = enable
+        binding.mbRegistrar.isEnabled = enable
+        binding.llProgress.visibility = if (!enable) View.VISIBLE else View.GONE
+    }
+
 }
