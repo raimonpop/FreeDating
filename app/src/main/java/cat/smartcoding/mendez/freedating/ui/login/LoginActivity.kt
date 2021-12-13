@@ -3,6 +3,7 @@ package cat.smartcoding.mendez.freedating.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import cat.smartcoding.mendez.freedating.MainActivity
 import cat.smartcoding.mendez.freedating.R
 import cat.smartcoding.mendez.freedating.databinding.ActivityLoginBinding
@@ -31,6 +32,9 @@ class LoginActivity : AppCompatActivity() {
             val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
                 
+        }.addOnFailureListener {
+            Toast.makeText(this, "ha ocurrido algo", Toast.LENGTH_SHORT).show()
+
         }
     }
 }
