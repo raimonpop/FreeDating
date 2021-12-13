@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("com.google.gms.google-services")
 //    id("kotlin-kapt")
 //    id("androidx.navigation.safeargs")
 }
@@ -76,6 +77,8 @@ dependencies {
     // RxJava2
     implementation("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
     implementation("io.reactivex.rxjava2:rxandroid:$rxJavaVersion")
+    implementation("com.google.firebase:firebase-auth-ktx:21.0.1")
+    implementation("androidx.annotation:annotation:1.3.0")
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

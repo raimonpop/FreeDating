@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "242024307399",
+    "project_id": "freedate-a7ae7",
+    "storage_bucket": "freedate-a7ae7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242024307399:android:d1f29d05c32022293d3ce2",
+        "android_client_info": {
+          "package_name": "cat.smartcoding.mendez.freedating"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242024307399-8qshkhls1e6bcsi0ibdcq5trmcdaa9vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1_AAIDIZQ3Fhpv2ioR5y8BEMjJrTcQb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242024307399-8qshkhls1e6bcsi0ibdcq5trmcdaa9vp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
