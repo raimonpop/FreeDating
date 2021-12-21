@@ -8,6 +8,7 @@ import android.widget.Toast
 import cat.smartcoding.mendez.freedating.MainActivity
 import cat.smartcoding.mendez.freedating.R
 import cat.smartcoding.mendez.freedating.databinding.ActivityLoginBinding
+import cat.smartcoding.mendez.freedating.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class LoginActivity : AppCompatActivity() {
                 visibility(false)
                 configAuth()
             }
+        }
+
+        binding.mbRegistrar.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 
